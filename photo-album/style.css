@@ -2,10 +2,9 @@ html {
   scroll-behavior: smooth;
 }
 
-h1,
-h2,
-a {
+body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  line-height: normal;
 }
 
 * {
@@ -153,7 +152,7 @@ header.dark {
   font-size: 2rem;
 }
 
-img.darkBig {
+img.dark_big {
   width: 31rem;
   height: 31rem;
   object-fit: cover;
@@ -175,7 +174,7 @@ section.dark {
   gap: 0.5rem;
 }
 
-section.darkSmall {
+section.dark_small {
   display: flex;
   gap: 0.5rem;
   width: 35rem;
@@ -205,14 +204,14 @@ img.pattern {
   border-radius: 1rem;
 }
 
-#firstPattern {
+#first_pattern {
   grid-column: 1/3;
 
   height: 100%;
   width: calc((100vw - 6rem) / 2);
 }
 
-#secondPattern {
+#second_pattern {
   grid-row: 2/3;
   grid-column: 1/3;
 
@@ -220,7 +219,7 @@ img.pattern {
   width: calc((100vw - 6rem) / 2);
 }
 
-#thirdPattern {
+#third_pattern {
   grid-row: 1/3;
   grid-column: 3/5;
 
@@ -228,7 +227,7 @@ img.pattern {
   width: calc((100vw - 6rem) / 2);
 }
 
-#fourthPattern {
+#fourth_pattern {
   grid-row: 3/5;
   grid-column: 1/4;
 
@@ -236,7 +235,7 @@ img.pattern {
   width: calc((100vw - 6rem) / 4 * 3);
 }
 
-#fifthPattern {
+#fifth_pattern {
   grid-row: 3/5;
 
   height: 100%;
@@ -271,7 +270,7 @@ button {
   color: white;
 }
 
-.topButton {
+.top_button {
   font-size: 1.5rem;
 }
 
@@ -297,7 +296,7 @@ footer {
     width: 20rem;
     height: 20rem;
   }
-  img.darkBig {
+  img.dark_big {
     width: 60rem;
     height: 60rem;
   }
@@ -308,7 +307,7 @@ footer {
   section.dark {
     flex-direction: column;
   }
-  section.darkSmall {
+  section.dark_small {
     width: 62rem;
     justify-content: center;
     align-items: center;
@@ -320,7 +319,7 @@ footer {
     width: 25rem;
     height: 25rem;
   }
-  img.darkBig {
+  img.dark_big {
     width: 50rem;
     height: 50rem;
   }
@@ -331,7 +330,7 @@ footer {
   section.dark {
     flex-direction: column;
   }
-  section.darkSmall {
+  section.dark_small {
     width: 52rem;
     justify-content: center;
     align-items: center;
@@ -343,7 +342,7 @@ footer {
     width: 40rem;
     height: 40rem;
   }
-  img.darkBig {
+  img.dark_big {
     width: 40rem;
     height: 40rem;
   }
@@ -354,7 +353,7 @@ footer {
   section.dark {
     flex-direction: column;
   }
-  section.darkSmall {
+  section.dark_small {
     width: 43rem;
     justify-content: center;
     align-items: center;
