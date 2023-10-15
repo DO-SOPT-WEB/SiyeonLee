@@ -291,10 +291,17 @@ footer {
 
 /* media query */
 
+@media screen and (max-width: 1330px) {
+  section.cute > img {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
 @media screen and (max-width: 1150px) {
   section.cute > img {
-    width: 20rem;
-    height: 20rem;
+    width: 30rem;
+    height: 30rem;
   }
   img.dark_big {
     width: 60rem;
@@ -314,10 +321,10 @@ footer {
   }
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1065px) {
   section.cute > img {
-    width: 25rem;
-    height: 25rem;
+    width: 50rem;
+    height: 50rem;
   }
   img.dark_big {
     width: 50rem;
@@ -337,7 +344,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 745px) {
+@media screen and (max-width: 830px) {
   section.cute > img {
     width: 40rem;
     height: 40rem;
