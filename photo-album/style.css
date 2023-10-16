@@ -115,13 +115,9 @@ section.cute > img {
   height: 15rem;
   object-fit: cover;
   border-radius: 1rem;
+
+  flex-grow: 1;
 }
-/* img.cute {
-  width: 15rem;
-  height: 15rem;
-  object-fit: cover;
-  border-radius: 1rem;
-} */
 
 section.cute {
   display: flex;
