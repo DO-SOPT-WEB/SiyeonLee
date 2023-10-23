@@ -64,7 +64,7 @@ section.preview > img {
 
 /* nav */
 
-nav {
+nav > ul {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -86,7 +86,7 @@ a:visited {
   text-decoration: none;
 }
 
-nav > a:hover {
+li > a:hover {
   color: #ff8c00;
   text-decoration: underline;
   cursor: pointer;
