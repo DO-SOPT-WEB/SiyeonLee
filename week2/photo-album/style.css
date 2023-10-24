@@ -15,7 +15,7 @@ img {
   transition: all 0.3s ease-in-out 0s;
 }
 
-img:hover {
+section > img:hover {
   transform: translateY(-0.3rem);
 }
 
@@ -110,7 +110,7 @@ header.cute {
   font-size: 2rem;
 }
 
-section.cute > img {
+section.cute > div > img {
   width: 15rem;
   height: 15rem;
   object-fit: cover;
@@ -361,4 +361,40 @@ footer {
     justify-content: center;
     align-items: center;
   }
+}
+
+section > div {
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  transition: all 0.3s ease-in-out 0s;
+}
+
+div:hover {
+  transform: translateY(-0.3rem);
+}
+
+div > span {
+  position: absolute;
+  display: none;
+
+  color: white;
+}
+
+.photo_title {
+  top: 3rem;
+
+  font-size: 1rem;
+  user-select: none;
+}
+
+.photo_detail {
+  top: 5rem;
+  padding: 1rem;
+  text-align: center;
+
+  font-size: 0.8rem;
+  user-select: none;
+  /* line-height: 2rem; */
 }
