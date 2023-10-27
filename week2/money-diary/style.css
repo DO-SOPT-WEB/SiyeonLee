@@ -288,6 +288,7 @@ footer > button {
 .submit_button {
   background-color: #4682b4;
   border-radius: 0.5rem;
+  height: 2rem;
 
   color: white;
 }
