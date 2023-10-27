@@ -117,34 +117,40 @@ const renderHistory = () => {
 
     historyArea.appendChild(historyBox);
 
-    addBalance(history.price, history.type);
+    // addBalance(history.price, history.type);
   });
+  // addBalance();
 };
 
 const deleteHistory = (title) => {
-  console.log("clicked");
   const item = currentHistoryList.find((x) => x.title === title);
   const index = currentHistoryList.indexOf(item);
-  console.log(index);
   currentHistoryList.splice(index, 1);
 
   currentBalance = 0;
   currentWithdraw = 0;
   currentDeposit = 0;
   renderHistory();
+  addBalance();
   setBalance();
 };
 
-const addBalance = (price, type) => {
-  if (type === "price_deposit") {
-    currentDeposit = currentDeposit + price;
-  }
+const addBalance = () => {
+  const allWithdraw = document.querySelectorAll(".price_withdraw ");
+  const allDeposit = document.querySelectorAll(".price_deposit");
 
-  if (type == "price_withdraw") {
-    currentWithdraw = currentWithdraw + price;
-  }
+  currentDeposit = 0;
+  currentWithdraw = 0;
 
-  currentBalance = currentDeposit - currentWithdraw;
+  allDeposit.forEach((price) => {
+    currentDeposit = currentDeposit + Number(price.innerHTML);
+  });
+
+  allWithdraw.forEach((price) => {
+    currentWithdraw = currentWithdraw + Number(price.innerHTML);
+  });
+
+  currentBalance = currentDeposit + currentWithdraw;
 
   setBalance();
 };
@@ -155,11 +161,11 @@ const setBalance = () => {
   balance.appendChild(balanceNum);
 
   deposit.innerHTML = "";
-  const totalDepositNum = document.createTextNode("➕" + currentDeposit);
+  const totalDepositNum = document.createTextNode("+" + currentDeposit);
   deposit.appendChild(totalDepositNum);
 
   withdraw.innerText = "";
-  const totalWithdrawNum = document.createTextNode("➖" + currentWithdraw);
+  const totalWithdrawNum = document.createTextNode(+currentWithdraw);
   withdraw.appendChild(totalWithdrawNum);
 };
 
@@ -241,6 +247,7 @@ function newHistory() {
     modalWrapper.style.display = "none";
 
     renderHistory();
+    addBalance();
   }
 }
 
@@ -249,4 +256,6 @@ const submitBtn = document.querySelector(".submit_button");
 submitBtn.addEventListener("click", newHistory);
 
 renderHistory();
+addBalance();
+
 setBalance();
