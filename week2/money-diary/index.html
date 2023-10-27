@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Synthia's Money Diary</title>
+  </head>
+  <body>
+    <header>
+      <h1>Money Diary💵</h1>
+    </header>
+    <main>
+      <section class="balance">
+        <span class="balance">
+          <b>My Balance</b>
+          <b id="balance"></b>
+          <span class="detail">
+            <b class="deposit"> </b>
+            <b class="withdraw"> </b>
+          </span>
+        </span>
+      </section>
+      <section class="list">
+        <span class="date">
+          <button type="button">&lt;</button>
+          <time> 10.10 </time>
+          <button type="button">&gt;</button>
+        </span>
+        <span class="checkbox">
+          <b>History</b>
+          <span class="buttons">
+            <button class="check_button" type="button">
+              <label>
+                <input
+                  type="checkbox"
+                  checked
+                  class="deposit_input"
+                  value="deposit"
+                />
+                <span> Deposit</span>
+              </label>
+            </button>
+            <button class="check_button" type="button">
+              <label>
+                <input
+                  type="checkbox"
+                  checked
+                  class="withdraw_input"
+                  value="withdraw"
+                />
+                <span> Withdraw</span>
+              </label>
+            </button>
+          </span>
+        </span>
+        <section class="history">
+          <ul></ul>
+        </section>
+      </section>
+      <section class="modal">
+        <button type="button" class="modal_close_button">X</button>
+        <b>Add history</b>
+        <span class="type_button_span">
+          <button class="check_button" id="check_button_deposit" type="button">
+            <label>
+              <input type="checkbox" checked class="modal_deposit_input" />
+              <span> Deposit</span>
+            </label>
+          </button>
+          <button class="check_button" id="check_button_withdraw" type="button">
+            <label>
+              <input type="checkbox" class="modal_withdraw_input" />
+              <span> Withdraw</span>
+            </label>
+          </button>
+        </span>
+
+        <b>Category</b>
+        <select id="select_deposit">
+          <option value="" selected disabled hidden>Please Select</option>
+          <option value="paycheck">Paycheck</option>
+          <option value="pocket_money">Pocket Money</option>
+        </select>
+        <select id="select_withdraw">
+          <option value="" selected disabled hidden>Please Select</option>
+          <option value="food">Food</option>
+          <option value="shopping">Shopping</option>
+        </select>
+        <b>Title</b>
+        <input class="input_title" />
+        <b>Price</b>
+        <input class="input_price" type="number" />
+        <button type="button" class="submit_button">Submit</button>
+      </section>
+    </main>
+    <footer>
+      <button type="button" id="add_button">+</button>
+    </footer>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
