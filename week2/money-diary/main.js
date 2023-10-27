@@ -13,7 +13,7 @@ const withdrawButton = document.querySelector(".withdraw_input");
 
 let currentHistoryList = HISTORY_LIST;
 
-function filter() {
+const filter = () => {
   currentHistoryList = [];
 
   if (depositButton.checked) {
@@ -36,7 +36,7 @@ function filter() {
     currentHistoryList = [];
     renderHistory();
   }
-}
+};
 
 depositButton.addEventListener("click", filter);
 withdrawButton.addEventListener("click", filter);
@@ -124,10 +124,7 @@ const renderHistory = () => {
     historyBox.appendChild(priceSpan);
 
     historyArea.appendChild(historyBox);
-
-    // addBalance(history.price, history.type);
   });
-  // addBalance();
 };
 
 const deleteHistory = (title) => {
@@ -138,6 +135,7 @@ const deleteHistory = (title) => {
   currentBalance = 0;
   currentWithdraw = 0;
   currentDeposit = 0;
+
   renderHistory();
   addBalance();
   setBalance();
@@ -185,7 +183,6 @@ const modal_deposit_input = document.querySelector(".modal_deposit_input");
 const modal_withdraw_input = document.querySelector(".modal_withdraw_input");
 const deposit_category_option = document.querySelector("#select_deposit");
 const withdraw_category_option = document.querySelector("#select_withdraw");
-
 const addButton = document.getElementById("add_button");
 
 addButton.onclick = () => {
@@ -199,7 +196,7 @@ modalCloseButton.onclick = () => {
 let newCategory = document.getElementById("select_deposit");
 let tempType = "price_deposit";
 
-function checkOnly(e) {
+const checkOnly = (e) => {
   if (e.target === modal_deposit_input) {
     modal_deposit_input.checked = true;
     modal_withdraw_input.checked = false;
@@ -221,7 +218,7 @@ function checkOnly(e) {
 
     newCategory = document.getElementById("select_withdraw");
   }
-}
+};
 
 modal_deposit_input.addEventListener("click", checkOnly);
 modal_withdraw_input.addEventListener("click", checkOnly);
@@ -229,7 +226,7 @@ modal_withdraw_input.addEventListener("click", checkOnly);
 const titleInput = document.querySelector(".input_title");
 const priceInput = document.querySelector(".input_price");
 
-function newHistory() {
+const newHistory = () => {
   let tempCategory = newCategory.value;
   let tempTitle = titleInput.value;
   let tempPrice = priceInput.value;
@@ -244,6 +241,7 @@ function newHistory() {
       type: tempType,
       price: Number(tempPrice),
     };
+
     currentHistoryList.push(newObject);
 
     newCategory.value = "";
@@ -257,7 +255,7 @@ function newHistory() {
     renderHistory();
     addBalance();
   }
-}
+};
 
 const submitBtn = document.querySelector(".submit_button");
 
@@ -265,5 +263,4 @@ submitBtn.addEventListener("click", newHistory);
 
 renderHistory();
 addBalance();
-
 setBalance();
