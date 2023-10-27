@@ -13,25 +13,33 @@ const withdrawButton = document.querySelector(".withdraw_input");
 
 let currentHistoryList = HISTORY_LIST;
 
-depositButton.addEventListener("click", () => {
+function filter() {
   currentHistoryList = [];
-  HISTORY_LIST.forEach((history) => {
-    if (history.type === "price_deposit") {
-      currentHistoryList.push(history);
-      rerenderHistory();
-    }
-  });
-});
 
-withdrawButton.addEventListener("click", () => {
-  currentHistoryList = [];
-  HISTORY_LIST.forEach((history) => {
-    if (history.type === "price_withdraw") {
-      currentHistoryList.push(history);
-      rerenderHistory();
-    }
-  });
-});
+  if (depositButton.checked) {
+    HISTORY_LIST.forEach((history) => {
+      if (history.type === "price_deposit") {
+        currentHistoryList.push(history);
+        rerenderHistory();
+      }
+    });
+  }
+  if (withdrawButton.checked) {
+    HISTORY_LIST.forEach((history) => {
+      if (history.type === "price_withdraw") {
+        currentHistoryList.push(history);
+        renderHistory();
+      }
+    });
+  }
+  if (!withdrawButton.checked && !depositButton.checked) {
+    currentHistoryList = [];
+    renderHistory();
+  }
+}
+
+depositButton.addEventListener("click", filter);
+withdrawButton.addEventListener("click", filter);
 
 const rerenderHistory = () => {
   const historyArea = document.querySelector("section.history > ul");
