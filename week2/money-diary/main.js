@@ -20,7 +20,7 @@ const filter = () => {
     HISTORY_LIST.forEach((history) => {
       if (history.type === "price_deposit") {
         currentHistoryList.push(history);
-        rerenderHistory();
+        renderHistory();
       }
     });
   }
@@ -33,56 +33,12 @@ const filter = () => {
     });
   }
   if (!withdrawButton.checked && !depositButton.checked) {
-    currentHistoryList = [];
     renderHistory();
   }
 };
 
 depositButton.addEventListener("click", filter);
 withdrawButton.addEventListener("click", filter);
-
-const rerenderHistory = () => {
-  const historyArea = document.querySelector("section.history > ul");
-  historyArea.innerHTML = "";
-
-  currentHistoryList.forEach((history) => {
-    const historyBox = document.createElement("li");
-    historyBox.className = "each_item";
-
-    const itemSpan = document.createElement("span");
-
-    const category = document.createElement("p");
-    category.className = "category";
-    category.innerText = history.category;
-
-    const title = document.createElement("p");
-    title.className = "title";
-    title.innerText = history.title;
-
-    itemSpan.appendChild(category);
-    itemSpan.appendChild(title);
-
-    const priceSpan = document.createElement("span");
-
-    const price = document.createElement("p");
-    price.className = history.type;
-    price.innerText =
-      history.type === "price_withdraw" ? -history.price : history.price;
-
-    const button = document.createElement("button");
-    button.className = "delete_button";
-    button.innerText = "X";
-    button.addEventListener("click", () => deleteHistory(history.title));
-
-    priceSpan.appendChild(price);
-    priceSpan.appendChild(button);
-
-    historyBox.appendChild(itemSpan);
-    historyBox.appendChild(priceSpan);
-
-    historyArea.appendChild(historyBox);
-  });
-};
 
 const renderHistory = () => {
   const historyArea = document.querySelector("section.history > ul");
@@ -138,7 +94,6 @@ const deleteHistory = (title) => {
 
   renderHistory();
   addBalance();
-  setBalance();
 };
 
 const addBalance = () => {
@@ -171,7 +126,7 @@ const setBalance = () => {
   deposit.appendChild(totalDepositNum);
 
   withdraw.innerText = "";
-  const totalWithdrawNum = document.createTextNode(+currentWithdraw);
+  const totalWithdrawNum = document.createTextNode(currentWithdraw);
   withdraw.appendChild(totalWithdrawNum);
 };
 
@@ -263,4 +218,3 @@ submitBtn.addEventListener("click", newHistory);
 
 renderHistory();
 addBalance();
-setBalance();
