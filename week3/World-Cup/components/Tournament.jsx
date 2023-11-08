@@ -1,14 +1,57 @@
 import styled from "styled-components";
-import React from "react";
-
+import React, { useState } from "react";
+import FirstStage from "./FirstStage";
+import SecondStage from "./SecondStage";
+import ThirdStage from "./ThirdStage";
+//
 const Tournament = () => {
-  return (
-    <TournamentContainer>
-      <HomeTitle>How would you like to choose your drink?</HomeTitle>
-      <TournamentBox>Tournament!</TournamentBox>
-      <StartBtn>Start!</StartBtn>
-    </TournamentContainer>
-  );
+  const [tournamentStage, setTournamentStage] = useState(0);
+
+  const renderTournament = () => {
+    switch (tournamentStage) {
+      case 0:
+        return (
+          <>
+            <HomeTitle>How would you like to choose your drink?</HomeTitle>
+            <TournamentBox>Tournament!</TournamentBox>
+            <StartBtn
+              type="button"
+              onClick={() => {
+                setTournamentStage(1);
+              }}
+            >
+              Start!
+            </StartBtn>
+          </>
+        );
+      case 1:
+        return (
+          <FirstStage
+            tournamentStage={tournamentStage}
+            setTournamentStage={setTournamentStage}
+          />
+        );
+        break;
+      case 2:
+        return (
+          <SecondStage
+            tournamentStage={tournamentStage}
+            setTournamentStage={setTournamentStage}
+          />
+        );
+      case 3:
+        return (
+          <ThirdStage
+            tournamentStage={tournamentStage}
+            setTournamentStage={setTournamentStage}
+          />
+        );
+      // case 4:
+      //return ();
+    }
+  };
+
+  return <TournamentContainer>{renderTournament()}</TournamentContainer>;
 };
 
 export default Tournament;

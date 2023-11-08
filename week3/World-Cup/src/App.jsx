@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
-import Random from "./Random";
-import Tournament from "./Tournament";
+import Random from "../components/Random";
+import Tournament from "../components/Tournament";
 
 function App() {
   const [currentStage, setCurrentStage] = useState("");
@@ -19,14 +19,16 @@ function App() {
           <Home>
             <HomeTitle>How would you like to choose your drink?</HomeTitle>
             <ChoiceBox>
-              <RandomBox
+              <ChooseBox
+                type="button"
                 onClick={() => {
                   setCurrentStage("random");
                 }}
               >
                 Random!
-              </RandomBox>
+              </ChooseBox>
               <ChooseBox
+                type="button"
                 onClick={() => {
                   setCurrentStage("tournament");
                 }}
@@ -85,8 +87,8 @@ const Header = styled.header`
 
 const ResetBtn = styled.button`
   position: fixed;
-  top: 2rem;
-  right: 2rem;
+  top: 2.5rem;
+  right: 2.5rem;
 
   width: 4.5rem;
   height: 4.5rem;
@@ -147,26 +149,26 @@ const ChoiceBox = styled.div`
   gap: 5rem;
 `;
 
-const RandomBox = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+// const RandomBox = styled.button`
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
 
-  width: calc((100vw - 60rem) / 2);
-  height: 20rem;
+//   width: calc((100vw - 60rem) / 2);
+//   height: 20rem;
 
-  background-color: ${({ theme }) => theme.colors.cream};
-  color: ${({ theme }) => theme.colors.navy};
+//   background-color: ${({ theme }) => theme.colors.cream};
+//   color: ${({ theme }) => theme.colors.navy};
 
-  border-radius: 1rem;
+//   border-radius: 1rem;
 
-  ${({ theme }) => theme.fonts.body_bold};
+//   ${({ theme }) => theme.fonts.body_bold};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.orange};
-    color: ${({ theme }) => theme.colors.white};
-  }
-`;
+//   &:hover {
+//     background-color: ${({ theme }) => theme.colors.orange};
+//     color: ${({ theme }) => theme.colors.white};
+//   }
+// `;
 
 const ChooseBox = styled.button`
   display: flex;
@@ -177,7 +179,7 @@ const ChooseBox = styled.button`
   height: 20rem;
 
   background-color: ${({ theme }) => theme.colors.cream};
-  color: #22668f;
+  color: ${({ theme }) => theme.colors.navy};
 
   border-radius: 1rem;
 

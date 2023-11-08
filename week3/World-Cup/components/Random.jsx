@@ -6,7 +6,7 @@ const Random = () => {
     <RandomContainer>
       <HomeTitle>How would you like to choose your drink?</HomeTitle>
       <RandomBox>Random!</RandomBox>
-      <StartBtn>Start!</StartBtn>
+      <StartBtn type="button">Start!</StartBtn>
     </RandomContainer>
   );
 };

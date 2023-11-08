@@ -2,40 +2,31 @@ import styled from "styled-components";
 
 import React, { useState } from "react";
 
-const FirstStage = (FirstStageProps) => {
-  const { tournamentStage, setTournamentStage } = FirstStageProps;
-  const [firstChoice, setFirstChoice] = useState("");
+const ThirdStage = (ThirdStageProps) => {
+  const { tournamentStage, setTournamentStage } = ThirdStageProps;
+  const [thirdChoice, setThirdChoice] = useState("");
 
   return (
-    <FirstStageContainer>
+    <ThirdStageContainer>
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
           type="button"
-          value="Coffee"
+          value="Hot"
           onClick={() => {
-            setFirstChoice("coffee");
+            setThirdChoice("hot");
           }}
         >
-          Coffee
+          Hot
         </Choice>
         <Choice
           type="button"
-          value="Tea"
+          value="Cold"
           onClick={() => {
-            setFirstChoice("tea");
+            setThirdChoice("cold");
           }}
         >
-          Tea
-        </Choice>
-        <Choice
-          type="button"
-          value="Halmi Latte"
-          onClick={() => {
-            setFirstChoice("halmi");
-          }}
-        >
-          Halmi Latte
+          Cold
         </Choice>
       </ChoiceBox>
       <ButtonBox>
@@ -47,7 +38,7 @@ const FirstStage = (FirstStageProps) => {
         >
           Previous
         </Button>
-        {firstChoice === "" ? (
+        {thirdChoice === "" ? (
           <Button
             type="button"
             onClick={() => {
@@ -64,17 +55,25 @@ const FirstStage = (FirstStageProps) => {
               setTournamentStage(tournamentStage + 1);
             }}
           >
-            Next
+            Submit
           </Button>
         )}
+        {/* <Button
+          type="button"
+          // onClick={() => {
+          //   setTournamentStage(tournamentStage + 1);
+          // }}
+        >
+          Submit
+        </Button> */}
       </ButtonBox>
-    </FirstStageContainer>
+    </ThirdStageContainer>
   );
 };
 
-export default FirstStage;
+export default ThirdStage;
 
-const FirstStageContainer = styled.section`
+const ThirdStageContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -2,40 +2,40 @@ import styled from "styled-components";
 
 import React, { useState } from "react";
 
-const FirstStage = (FirstStageProps) => {
-  const { tournamentStage, setTournamentStage } = FirstStageProps;
-  const [firstChoice, setFirstChoice] = useState("");
+const SecondStage = (SecondStageProps) => {
+  const { tournamentStage, setTournamentStage } = SecondStageProps;
+  const [secondChoice, setSecondChoice] = useState("");
 
   return (
-    <FirstStageContainer>
+    <SecondStageContainer>
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
           type="button"
-          value="Coffee"
+          value="Sweet"
           onClick={() => {
-            setFirstChoice("coffee");
+            setSecondChoice("sweet");
           }}
         >
-          Coffee
+          Sweet
         </Choice>
         <Choice
           type="button"
-          value="Tea"
+          value="Non-Sweet"
           onClick={() => {
-            setFirstChoice("tea");
+            setSecondChoice("non-sweet");
           }}
         >
-          Tea
+          Non-Sweet
         </Choice>
         <Choice
           type="button"
-          value="Halmi Latte"
+          value="dairy"
           onClick={() => {
-            setFirstChoice("halmi");
+            setSecondChoice("dairy");
           }}
         >
-          Halmi Latte
+          Dairy
         </Choice>
       </ChoiceBox>
       <ButtonBox>
@@ -47,7 +47,7 @@ const FirstStage = (FirstStageProps) => {
         >
           Previous
         </Button>
-        {firstChoice === "" ? (
+        {secondChoice === "" ? (
           <Button
             type="button"
             onClick={() => {
@@ -68,13 +68,13 @@ const FirstStage = (FirstStageProps) => {
           </Button>
         )}
       </ButtonBox>
-    </FirstStageContainer>
+    </SecondStageContainer>
   );
 };
 
-export default FirstStage;
+export default SecondStage;
 
-const FirstStageContainer = styled.section`
+const SecondStageContainer = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -126,6 +126,8 @@ const Choice = styled.button`
   border-radius: 1rem;
 
   ${({ theme }) => theme.fonts.body_bold};
+
+  cursor: pointer;
 
   &:hover,
   &:focus {

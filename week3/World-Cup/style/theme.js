@@ -7,6 +7,7 @@ const colors = {
   cream: "#fffadd",
   black: "#000000",
   white: "#ffffff",
+  disabled_button: "#b1ad9a",
 };
 
 const fonts = {
