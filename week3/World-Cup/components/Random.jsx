@@ -7,7 +7,7 @@ const Random = () => {
 
   const renderRandom = () => {
     return showResult ? (
-      <RandomResult />
+      <RandomResult setShowResult={setShowResult} />
     ) : (
       <>
         <HomeTitle>How would you like to choose your drink?</HomeTitle>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import DRINK_LIST from "../src/assets/data";
 
-const RandomResult = () => {
+const RandomResult = ({ setShowResult }) => {
   const [time, setTime] = useState(3);
 
   useEffect(() => {
@@ -18,6 +18,14 @@ const RandomResult = () => {
         <MenuBox>
           <MenuImage src={randomPick.img} alt={randomPick.name} />
           <MenuName>{randomPick.name}</MenuName>
+          <BackBtn
+            type="button"
+            onClick={() => {
+              setShowResult(false);
+            }}
+          >
+            Return
+          </BackBtn>
         </MenuBox>
       </>
     );
@@ -26,6 +34,27 @@ const RandomResult = () => {
 };
 
 export default RandomResult;
+
+const BackBtn = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 8rem;
+  height: 2rem;
+
+  border-radius: 0.5rem;
+
+  background-color: ${({ theme }) => theme.colors.cream};
+  color: ${({ theme }) => theme.colors.navy};
+
+  ${({ theme }) => theme.fonts.body_bold};
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.orange};
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
 
 const TimeBox = styled.div`
   display: flex;
@@ -47,7 +76,7 @@ const Title = styled.p`
   height: 3rem;
 
   border-radius: 0.5rem;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 
   background-color: ${({ theme }) => theme.colors.cream};
   color: ${({ theme }) => theme.colors.navy};
