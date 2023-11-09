@@ -1,14 +1,30 @@
 import styled from "styled-components";
-import React from "react";
+import React, { useState } from "react";
+import RandomResult from "./RandomResult";
 
 const Random = () => {
-  return (
-    <RandomContainer>
-      <HomeTitle>How would you like to choose your drink?</HomeTitle>
-      <RandomBox>Random!</RandomBox>
-      <StartBtn type="button">Start!</StartBtn>
-    </RandomContainer>
-  );
+  const [showResult, setShowResult] = useState(false);
+
+  const renderRandom = () => {
+    return showResult ? (
+      <RandomResult />
+    ) : (
+      <>
+        <HomeTitle>How would you like to choose your drink?</HomeTitle>
+        <RandomBox>Random!</RandomBox>
+        <StartBtn
+          type="button"
+          onClick={() => {
+            setShowResult(true);
+          }}
+        >
+          Start!
+        </StartBtn>
+      </>
+    );
+  };
+
+  return <RandomContainer>{renderRandom()}</RandomContainer>;
 };
 
 export default Random;

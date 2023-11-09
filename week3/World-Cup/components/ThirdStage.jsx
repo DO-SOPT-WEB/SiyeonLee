@@ -46,7 +46,7 @@ const ThirdStage = (ThirdStageProps) => {
             }}
             disabled
           >
-            Next
+            Submit
           </Button>
         ) : (
           <Button

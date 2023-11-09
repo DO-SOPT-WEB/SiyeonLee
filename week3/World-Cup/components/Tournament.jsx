@@ -51,6 +51,12 @@ const Tournament = () => {
     }
   };
 
+  // const renderProgress = () =>{
+  //   return (
+
+  //   )
+  // }
+
   return <TournamentContainer>{renderTournament()}</TournamentContainer>;
 };
 

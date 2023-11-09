@@ -10,10 +10,8 @@ function App() {
     switch (currentStage) {
       case "random":
         return <Random />;
-        break;
       case "tournament":
         return <Tournament setCurrentStage={setCurrentStage} />;
-        break;
       default:
         return (
           <Home>
@@ -148,27 +146,6 @@ const ChoiceBox = styled.div`
   align-items: center;
   gap: 5rem;
 `;
-
-// const RandomBox = styled.button`
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-
-//   width: calc((100vw - 60rem) / 2);
-//   height: 20rem;
-
-//   background-color: ${({ theme }) => theme.colors.cream};
-//   color: ${({ theme }) => theme.colors.navy};
-
-//   border-radius: 1rem;
-
-//   ${({ theme }) => theme.fonts.body_bold};
-
-//   &:hover {
-//     background-color: ${({ theme }) => theme.colors.orange};
-//     color: ${({ theme }) => theme.colors.white};
-//   }
-// `;
 
 const ChooseBox = styled.button`
   display: flex;
