@@ -1,17 +1,37 @@
-import { useState } from "react";
+import { useReducer } from "react";
 import styled from "styled-components";
 import Random from "../components/Random";
 import Tournament from "../components/Tournament";
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case SET_STAGE:
+      return { currentStage: action.payload };
+    case RESET_STAGE:
+      return { currentStage: "" };
+    default:
+      throw new Error();
+  }
+};
+const initialState = { currentStage: "" };
+const SET_STAGE = "SET_STAGE";
+const RESET_STAGE = "RESET_STAGE";
+
 function App() {
-  const [currentStage, setCurrentStage] = useState("");
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const renderOption = () => {
-    switch (currentStage) {
+    switch (state.currentStage) {
       case "random":
         return <Random />;
       case "tournament":
-        return <Tournament setCurrentStage={setCurrentStage} />;
+        return (
+          <Tournament
+            setCurrentStage={(stage) =>
+              dispatch({ type: SET_STAGE, payload: stage })
+            }
+          />
+        );
       default:
         return (
           <Home>
@@ -20,7 +40,7 @@ function App() {
               <ChooseBox
                 type="button"
                 onClick={() => {
-                  setCurrentStage("random");
+                  dispatch({ type: SET_STAGE, payload: "random" });
                 }}
               >
                 Random!
@@ -28,7 +48,7 @@ function App() {
               <ChooseBox
                 type="button"
                 onClick={() => {
-                  setCurrentStage("tournament");
+                  dispatch({ type: SET_STAGE, payload: "tournament" });
                 }}
               >
                 Tournament!
@@ -40,12 +60,12 @@ function App() {
   };
 
   const renderResetBtn = () => {
-    if (currentStage !== "") {
+    if (state.currentStage !== "") {
       return (
         <ResetBtn
           type="button"
           onClick={() => {
-            setCurrentStage("");
+            dispatch({ type: RESET_STAGE });
           }}
         >
           Start Over
