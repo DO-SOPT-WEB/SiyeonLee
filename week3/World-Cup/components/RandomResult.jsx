@@ -64,7 +64,27 @@ const TimeBox = styled.div`
   width: calc(100vh - 20rem);
   height: calc(100vh - 20rem);
 
-  ${({ theme }) => theme.fonts.title};
+  ${({ theme }) => theme.fonts.subtitle};
+
+  animation: 1s anim-lineUp ease-out infinite;
+
+  @keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translateY(80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
 `;
 
 const Title = styled.p`
