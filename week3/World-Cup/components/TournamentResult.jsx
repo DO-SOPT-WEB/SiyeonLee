@@ -2,7 +2,13 @@ import styled from "styled-components";
 import React from "react";
 
 const TournamentResult = (tournamentResultProps) => {
-  const { setTournamentStage, filterList } = tournamentResultProps;
+  const {
+    setTournamentStage,
+    filterList,
+    setFirstChoice,
+    setSecondChoice,
+    setThirdChoice,
+  } = tournamentResultProps;
 
   const finalResult = filterList();
 
@@ -16,6 +22,9 @@ const TournamentResult = (tournamentResultProps) => {
           type="button"
           onClick={() => {
             setTournamentStage(0);
+            setFirstChoice("");
+            setSecondChoice("");
+            setThirdChoice("");
           }}
         >
           Return

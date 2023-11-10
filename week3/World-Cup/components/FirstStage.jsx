@@ -8,8 +8,6 @@ const FirstStage = (FirstStageProps) => {
 
   return (
     <FirstStageContainer>
-      {console.log(firstChoice)}
-
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
@@ -18,6 +16,7 @@ const FirstStage = (FirstStageProps) => {
           onClick={() => {
             setFirstChoice("coffee");
           }}
+          className={firstChoice === "coffee" && "selected"}
         >
           Coffee
         </Choice>
@@ -27,6 +26,7 @@ const FirstStage = (FirstStageProps) => {
           onClick={() => {
             setFirstChoice("tea");
           }}
+          className={firstChoice === "tea" && "selected"}
         >
           Tea
         </Choice>
@@ -36,6 +36,7 @@ const FirstStage = (FirstStageProps) => {
           onClick={() => {
             setFirstChoice("halmi");
           }}
+          className={firstChoice === "halmi" && "selected"}
         >
           Halmi Latte
         </Choice>
@@ -130,7 +131,7 @@ const Choice = styled.button`
   ${({ theme }) => theme.fonts.body_bold};
 
   &:hover,
-  &:focus {
+  &.selected {
     background-color: ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.white};
   }

@@ -30,19 +30,11 @@ const Tournament = () => {
     return finalResult;
   };
 
-  const resetChoices = () => {
-    setFirstChoice("");
-    setSecondChoice("");
-    setThirdChoice("");
-  };
-
   const renderTournament = () => {
     switch (tournamentStage) {
       case 0:
         return (
           <>
-            {/* {resetChoices()} */}
-            {/* {setFirstChoice("")} */}
             <HomeTitle>How would you like to choose your drink?</HomeTitle>
             <TournamentBox>Tournament!</TournamentBox>
             <StartBtn
@@ -88,6 +80,9 @@ const Tournament = () => {
           <TournamentResult
             filterList={filterList}
             setTournamentStage={setTournamentStage}
+            setFirstChoice={setFirstChoice}
+            setSecondChoice={setSecondChoice}
+            setThirdChoice={setThirdChoice}
           />
         );
     }

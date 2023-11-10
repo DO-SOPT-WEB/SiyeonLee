@@ -13,8 +13,6 @@ const ThirdStage = (ThirdStageProps) => {
 
   return (
     <ThirdStageContainer>
-      {console.log(thirdChoice)}
-
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
@@ -23,6 +21,7 @@ const ThirdStage = (ThirdStageProps) => {
           onClick={() => {
             setThirdChoice("hot");
           }}
+          className={thirdChoice === "hot" && "selected"}
         >
           Hot
         </Choice>
@@ -32,6 +31,7 @@ const ThirdStage = (ThirdStageProps) => {
           onClick={() => {
             setThirdChoice("cold");
           }}
+          className={thirdChoice === "cold" && "selected"}
         >
           Cold
         </Choice>

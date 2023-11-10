@@ -8,8 +8,6 @@ const SecondStage = (SecondStageProps) => {
 
   return (
     <SecondStageContainer>
-      {console.log(secondChoice)}
-
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
@@ -18,7 +16,7 @@ const SecondStage = (SecondStageProps) => {
           onClick={() => {
             setSecondChoice("sweet");
           }}
-          // className={secondChoice === "sweet" && "selected"}
+          className={secondChoice === "sweet" && "selected"}
         >
           Sweet
         </Choice>
@@ -28,7 +26,7 @@ const SecondStage = (SecondStageProps) => {
           onClick={() => {
             setSecondChoice("non-sweet");
           }}
-          // className={secondChoice === "non-sweet" && "selected"}
+          className={secondChoice === "non-sweet" && "selected"}
         >
           Non-Sweet
         </Choice>
@@ -38,7 +36,7 @@ const SecondStage = (SecondStageProps) => {
           onClick={() => {
             setSecondChoice("dairy");
           }}
-          // className={secondChoice === "dairy" && "selected"}
+          className={secondChoice === "dairy" && "selected"}
         >
           Dairy
         </Choice>
