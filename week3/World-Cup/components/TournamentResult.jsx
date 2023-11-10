@@ -14,7 +14,7 @@ const TournamentResult = (tournamentResultProps) => {
 
   return (
     <>
-      <Title>Here's your random drink!</Title>
+      <Title>Here's your drink!</Title>
       <MenuBox>
         <MenuImage src={finalResult.img} alt={finalResult.name} />
         <MenuName>{finalResult.name}</MenuName>

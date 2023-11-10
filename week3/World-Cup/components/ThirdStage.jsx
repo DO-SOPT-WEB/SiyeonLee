@@ -13,7 +13,7 @@ const ThirdStage = (ThirdStageProps) => {
 
   return (
     <ThirdStageContainer>
-      <StageTitle>Random Choice</StageTitle>
+      <StageTitle>Choose your preference</StageTitle>
       <ChoiceBox>
         <Choice
           type="button"
