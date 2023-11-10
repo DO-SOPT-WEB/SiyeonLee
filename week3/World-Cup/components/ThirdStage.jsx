@@ -128,7 +128,7 @@ const Choice = styled.button`
   ${({ theme }) => theme.fonts.body_bold};
 
   &:hover,
-  &:focus {
+  &.selected {
     background-color: ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.white};
   }
