@@ -3,15 +3,46 @@ import React, { useState } from "react";
 import FirstStage from "./FirstStage";
 import SecondStage from "./SecondStage";
 import ThirdStage from "./ThirdStage";
-//
+import DRINK_LIST from "../src/assets/data";
+import TournamentResult from "./TournamentResult";
+
 const Tournament = () => {
   const [tournamentStage, setTournamentStage] = useState(0);
+  const [firstChoice, setFirstChoice] = useState("");
+  const [secondChoice, setSecondChoice] = useState("");
+  const [thirdChoice, setThirdChoice] = useState("");
+
+  const filterList = () => {
+    const firstFilteredList = DRINK_LIST.filter(
+      (item) => item.category[0] === firstChoice
+    );
+
+    const secondFilteredList = firstFilteredList.filter(
+      (item) => item.category[1] === secondChoice
+    );
+
+    const thirdFilteredList = secondFilteredList.filter(
+      (item) => item.category[2] === thirdChoice
+    );
+
+    const finalResult = thirdFilteredList[0];
+
+    return finalResult;
+  };
+
+  const resetChoices = () => {
+    setFirstChoice("");
+    setSecondChoice("");
+    setThirdChoice("");
+  };
 
   const renderTournament = () => {
     switch (tournamentStage) {
       case 0:
         return (
           <>
+            {/* {resetChoices()} */}
+            {/* {setFirstChoice("")} */}
             <HomeTitle>How would you like to choose your drink?</HomeTitle>
             <TournamentBox>Tournament!</TournamentBox>
             <StartBtn
@@ -29,14 +60,17 @@ const Tournament = () => {
           <FirstStage
             tournamentStage={tournamentStage}
             setTournamentStage={setTournamentStage}
+            firstChoice={firstChoice}
+            setFirstChoice={setFirstChoice}
           />
         );
-        break;
       case 2:
         return (
           <SecondStage
             tournamentStage={tournamentStage}
             setTournamentStage={setTournamentStage}
+            secondChoice={secondChoice}
+            setSecondChoice={setSecondChoice}
           />
         );
       case 3:
@@ -44,10 +78,18 @@ const Tournament = () => {
           <ThirdStage
             tournamentStage={tournamentStage}
             setTournamentStage={setTournamentStage}
+            thirdChoice={thirdChoice}
+            setThirdChoice={setThirdChoice}
+            filterList={filterList}
           />
         );
-      // case 4:
-      //return ();
+      case 4:
+        return (
+          <TournamentResult
+            filterList={filterList}
+            setTournamentStage={setTournamentStage}
+          />
+        );
     }
   };
 

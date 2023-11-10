@@ -1,13 +1,20 @@
 import styled from "styled-components";
 
-import React, { useState } from "react";
+import React from "react";
 
 const ThirdStage = (ThirdStageProps) => {
-  const { tournamentStage, setTournamentStage } = ThirdStageProps;
-  const [thirdChoice, setThirdChoice] = useState("");
+  const {
+    tournamentStage,
+    setTournamentStage,
+    thirdChoice,
+    setThirdChoice,
+    filterList,
+  } = ThirdStageProps;
 
   return (
     <ThirdStageContainer>
+      {console.log(thirdChoice)}
+
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
@@ -42,6 +49,7 @@ const ThirdStage = (ThirdStageProps) => {
           <Button
             type="button"
             onClick={() => {
+              filterList();
               setTournamentStage(tournamentStage + 1);
             }}
             disabled
@@ -52,20 +60,13 @@ const ThirdStage = (ThirdStageProps) => {
           <Button
             type="button"
             onClick={() => {
+              filterList();
               setTournamentStage(tournamentStage + 1);
             }}
           >
             Submit
           </Button>
         )}
-        {/* <Button
-          type="button"
-          // onClick={() => {
-          //   setTournamentStage(tournamentStage + 1);
-          // }}
-        >
-          Submit
-        </Button> */}
       </ButtonBox>
     </ThirdStageContainer>
   );

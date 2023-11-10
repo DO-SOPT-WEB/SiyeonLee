@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-import React, { useState } from "react";
+import React from "react";
 
 const FirstStage = (FirstStageProps) => {
-  const { tournamentStage, setTournamentStage } = FirstStageProps;
-  const [firstChoice, setFirstChoice] = useState("");
+  const { tournamentStage, setTournamentStage, firstChoice, setFirstChoice } =
+    FirstStageProps;
 
   return (
     <FirstStageContainer>
+      {console.log(firstChoice)}
+
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice

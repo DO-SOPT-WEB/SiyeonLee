@@ -1,13 +1,15 @@
 import styled from "styled-components";
 
-import React, { useState } from "react";
+import React from "react";
 
 const SecondStage = (SecondStageProps) => {
-  const { tournamentStage, setTournamentStage } = SecondStageProps;
-  const [secondChoice, setSecondChoice] = useState("");
+  const { tournamentStage, setTournamentStage, secondChoice, setSecondChoice } =
+    SecondStageProps;
 
   return (
     <SecondStageContainer>
+      {console.log(secondChoice)}
+
       <StageTitle>Random Choice</StageTitle>
       <ChoiceBox>
         <Choice
@@ -16,6 +18,7 @@ const SecondStage = (SecondStageProps) => {
           onClick={() => {
             setSecondChoice("sweet");
           }}
+          // className={secondChoice === "sweet" && "selected"}
         >
           Sweet
         </Choice>
@@ -25,6 +28,7 @@ const SecondStage = (SecondStageProps) => {
           onClick={() => {
             setSecondChoice("non-sweet");
           }}
+          // className={secondChoice === "non-sweet" && "selected"}
         >
           Non-Sweet
         </Choice>
@@ -34,6 +38,7 @@ const SecondStage = (SecondStageProps) => {
           onClick={() => {
             setSecondChoice("dairy");
           }}
+          // className={secondChoice === "dairy" && "selected"}
         >
           Dairy
         </Choice>
@@ -130,7 +135,7 @@ const Choice = styled.button`
   cursor: pointer;
 
   &:hover,
-  &:focus {
+  &.selected {
     background-color: ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.white};
   }
