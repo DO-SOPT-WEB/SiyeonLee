@@ -54,6 +54,8 @@ const Tournament = () => {
             setTournamentStage={setTournamentStage}
             firstChoice={firstChoice}
             setFirstChoice={setFirstChoice}
+            setSecondChoice={setSecondChoice}
+            setThirdChoice={setThirdChoice}
           />
         );
       case 2:

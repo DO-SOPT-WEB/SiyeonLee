@@ -3,8 +3,14 @@ import styled from "styled-components";
 import React from "react";
 
 const FirstStage = (FirstStageProps) => {
-  const { tournamentStage, setTournamentStage, firstChoice, setFirstChoice } =
-    FirstStageProps;
+  const {
+    tournamentStage,
+    setTournamentStage,
+    firstChoice,
+    setFirstChoice,
+    setSecondChoice,
+    setThirdChoice,
+  } = FirstStageProps;
 
   return (
     <FirstStageContainer>
@@ -46,6 +52,9 @@ const FirstStage = (FirstStageProps) => {
           type="button"
           onClick={() => {
             setTournamentStage(tournamentStage - 1);
+            setFirstChoice("");
+            setSecondChoice("");
+            setThirdChoice("");
           }}
         >
           Previous
