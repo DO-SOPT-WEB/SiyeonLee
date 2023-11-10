@@ -49,33 +49,42 @@ const Tournament = () => {
         );
       case 1:
         return (
-          <FirstStage
-            tournamentStage={tournamentStage}
-            setTournamentStage={setTournamentStage}
-            firstChoice={firstChoice}
-            setFirstChoice={setFirstChoice}
-            setSecondChoice={setSecondChoice}
-            setThirdChoice={setThirdChoice}
-          />
+          <>
+            <FirstStage
+              tournamentStage={tournamentStage}
+              setTournamentStage={setTournamentStage}
+              firstChoice={firstChoice}
+              setFirstChoice={setFirstChoice}
+              setSecondChoice={setSecondChoice}
+              setThirdChoice={setThirdChoice}
+            />
+            <Progress>{tournamentStage} / 3</Progress>
+          </>
         );
       case 2:
         return (
-          <SecondStage
-            tournamentStage={tournamentStage}
-            setTournamentStage={setTournamentStage}
-            secondChoice={secondChoice}
-            setSecondChoice={setSecondChoice}
-          />
+          <>
+            <SecondStage
+              tournamentStage={tournamentStage}
+              setTournamentStage={setTournamentStage}
+              secondChoice={secondChoice}
+              setSecondChoice={setSecondChoice}
+            />
+            <Progress>{tournamentStage} / 3</Progress>
+          </>
         );
       case 3:
         return (
-          <ThirdStage
-            tournamentStage={tournamentStage}
-            setTournamentStage={setTournamentStage}
-            thirdChoice={thirdChoice}
-            setThirdChoice={setThirdChoice}
-            filterList={filterList}
-          />
+          <>
+            <ThirdStage
+              tournamentStage={tournamentStage}
+              setTournamentStage={setTournamentStage}
+              thirdChoice={thirdChoice}
+              setThirdChoice={setThirdChoice}
+              filterList={filterList}
+            />
+            <Progress>{tournamentStage} / 3</Progress>
+          </>
         );
       case 4:
         return (
@@ -100,6 +109,16 @@ const Tournament = () => {
 };
 
 export default Tournament;
+
+const Progress = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-top: 2rem;
+
+  ${({ theme }) => theme.fonts.subtitle};
+`;
 
 const TournamentContainer = styled.section`
   display: flex;
