@@ -23,10 +23,10 @@ const fonts = {
     font-weight: 500;
     font-style: normal;
   `,
-  body_bold: css`
+  small_button: css`
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     font-style: normal;
   `,
 };

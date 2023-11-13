@@ -10,11 +10,11 @@ const LoginPage = () => {
       <InputContainer>
         <IndivInputWrapper>
           <InputTitle>ID</InputTitle>
-          <Input placeholder="Enter ID Here"></Input>
+          <Input placeholder="Enter ID Here" />
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>PASSWORD</InputTitle>
-          <Input placeholder="Enter Password Here"></Input>
+          <Input placeholder="Enter Password Here" />
         </IndivInputWrapper>
       </InputContainer>
       <ButtonContainer>
@@ -50,6 +50,8 @@ const Button = styled.button`
   height: 3rem;
 
   border-radius: 0.5rem;
+
+  ${({ theme }) => theme.fonts.subtitle};
 
   &.signup {
     background-color: ${({ theme }) => theme.colors.mid_green};
