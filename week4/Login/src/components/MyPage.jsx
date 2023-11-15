@@ -1,17 +1,39 @@
 import styled from "styled-components";
 import UserIcon from "../../public/icons/UserIcon.svg";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const MyPage = () => {
   const navigate = useNavigate();
+  const { userId } = useParams();
+
+  const [dataResponse, setDataResponse] = useState({});
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BASE_URL}/api/v1/members/${userId}`
+        );
+
+        setDataResponse(response);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getData();
+  }, []);
+
   return (
     <MyPageContainer>
       <Title>My Page</Title>
       <ProfileWrapper>
         <UserProfile src={UserIcon} />
         <UserInfoWrapper>
-          <UserInfo>ID:</UserInfo>
-          <UserInfo>PW:</UserInfo>
+          <UserInfo>ID: {dataResponse?.data?.username}</UserInfo>
+          <UserInfo>Nickname: {dataResponse?.data?.nickname}</UserInfo>
         </UserInfoWrapper>
       </ProfileWrapper>
       <Button
@@ -76,7 +98,7 @@ const UserInfo = styled.div`
   display: flex;
   align-items: center;
 
-  width: 15rem;
+  width: 18rem;
   height: 2.5rem;
 
   padding: 0.5rem;
