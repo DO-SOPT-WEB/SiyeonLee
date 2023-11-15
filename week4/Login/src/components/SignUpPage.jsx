@@ -22,6 +22,7 @@ const SignUpPage = () => {
       console.log(response);
       response && navigate(`/login`);
     } catch (err) {
+      alert("fill in the blanks plz");
       console.log(err);
     }
   };
