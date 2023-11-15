@@ -1,8 +1,28 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLoginBtnClick = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/members/sign-in`,
+        {
+          username: id,
+          password: password,
+        }
+      );
+
+      response && navigate(`/mypage/${response.data.id}`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <LoginPageContainer>
@@ -10,18 +30,30 @@ const LoginPage = () => {
       <InputContainer>
         <IndivInputWrapper>
           <InputTitle>ID</InputTitle>
-          <Input placeholder="Enter ID Here" />
+          <Input
+            placeholder="Enter ID Here"
+            value={id}
+            onChange={(e) => {
+              setId(e.target.value);
+            }}
+          />
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>PASSWORD</InputTitle>
-          <Input placeholder="Enter Password Here" />
+          <Input
+            placeholder="Enter Password Here"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+            }}
+          />
         </IndivInputWrapper>
       </InputContainer>
       <ButtonContainer>
         <Button
           type="button"
           onClick={() => {
-            navigate(`/mypage/2`);
+            handleLoginBtnClick();
           }}
         >
           Login
