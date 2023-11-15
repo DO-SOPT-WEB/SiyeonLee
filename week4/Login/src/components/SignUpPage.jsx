@@ -1,8 +1,30 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
+import axios from "axios";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [name, setName] = useState("");
+
+  const handleSignUpBtnClick = async () => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/members`,
+        {
+          username: id,
+          nickname: name,
+          password: pw,
+        }
+      );
+      console.log(response);
+      response && navigate(`/login`);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <SignUpPageContainer>
@@ -11,7 +33,14 @@ const SignUpPage = () => {
         <IndivInputWrapper>
           <InputTitle>ID</InputTitle>
           <IdInputWrapper>
-            <Input placeholder="Enter ID Here" className="id" />
+            <Input
+              placeholder="Enter ID Here"
+              className="id"
+              value={id}
+              onChange={(e) => {
+                setId(e.target.value);
+              }}
+            />
             <Button className="check" type="button">
               Check
             </Button>
@@ -19,7 +48,13 @@ const SignUpPage = () => {
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>PASSWORD</InputTitle>
-          <Input placeholder="Enter Password Here" />
+          <Input
+            placeholder="Enter Password Here"
+            value={pw}
+            onChange={(e) => {
+              setPw(e.target.value);
+            }}
+          />
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>CONFIRM P/W</InputTitle>
@@ -27,13 +62,19 @@ const SignUpPage = () => {
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>USERNAME</InputTitle>
-          <Input placeholder="Enter Username Here" />
+          <Input
+            placeholder="Enter Username Here"
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
         </IndivInputWrapper>
       </InputContainer>
       <Button
         type="button"
         onClick={() => {
-          navigate(`/login`);
+          handleSignUpBtnClick();
         }}
       >
         Sign Me Up!
