@@ -44,11 +44,6 @@ const SignUpPage = () => {
 
 export default SignUpPage;
 
-const IdInputWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
-
 const SignUpPageContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -61,6 +56,57 @@ const SignUpPageContainer = styled.div`
   border-radius: 1rem;
 
   background-color: ${({ theme }) => theme.colors.beige};
+`;
+
+const Title = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ${({ theme }) => theme.fonts.title};
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+`;
+
+const IndivInputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 30rem;
+`;
+
+const InputTitle = styled.p`
+  display: flex;
+  justify-content: center;
+
+  align-items: center ${({ theme }) => theme.fonts.subtitle};
+`;
+
+const IdInputWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+const Input = styled.input`
+  width: 15rem;
+  height: 2.5rem;
+
+  border: 1px solid ${({ theme }) => theme.colors.dark_green};
+  border-radius: 0.3rem;
+
+  &.id {
+    width: 10rem;
+  }
 `;
 
 const Button = styled.button`
@@ -80,50 +126,4 @@ const Button = styled.button`
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.small_button};
   }
-`;
-
-const Input = styled.input`
-  width: 15rem;
-  height: 2.5rem;
-
-  border: 1px solid ${({ theme }) => theme.colors.dark_green};
-  border-radius: 0.3rem;
-
-  &.id {
-    width: 10rem;
-  }
-`;
-
-const IndivInputWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 30rem;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-`;
-
-const InputTitle = styled.p`
-  display: flex;
-  justify-content: center;
-
-  align-items: center ${({ theme }) => theme.fonts.subtitle};
-`;
-
-const Title = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  ${({ theme }) => theme.fonts.title};
 `;

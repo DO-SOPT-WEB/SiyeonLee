@@ -18,7 +18,12 @@ const LoginPage = () => {
         </IndivInputWrapper>
       </InputContainer>
       <ButtonContainer>
-        <Button type="button" onClick={() => {}}>
+        <Button
+          type="button"
+          onClick={() => {
+            navigate(`/mypage/2`);
+          }}
+        >
           Login
         </Button>
         <Button
@@ -36,61 +41,6 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  margin-top: 3rem;
-`;
-
-const Button = styled.button`
-  width: 30rem;
-  height: 3rem;
-
-  border-radius: 0.5rem;
-
-  ${({ theme }) => theme.fonts.subtitle};
-
-  &.signup {
-    background-color: ${({ theme }) => theme.colors.mid_green};
-    color: ${({ theme }) => theme.colors.white};
-  }
-`;
-
-const Input = styled.input`
-  width: 15rem;
-  height: 2.5rem;
-
-  border: 1px solid ${({ theme }) => theme.colors.dark_green};
-  border-radius: 0.3rem;
-`;
-
-const IndivInputWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  width: 30rem;
-`;
-
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-
-  margin-top: 3rem;
-`;
-
-const InputTitle = styled.p`
-  display: flex;
-  justify-content: center;
-
-  align-items: center ${({ theme }) => theme.fonts.subtitle};
-`;
 
 const LoginPageContainer = styled.div`
   display: flex;
@@ -112,4 +62,59 @@ const Title = styled.span`
   align-items: center;
 
   ${({ theme }) => theme.fonts.title};
+`;
+
+const InputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  margin-top: 3rem;
+`;
+
+const IndivInputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 30rem;
+`;
+
+const Input = styled.input`
+  width: 15rem;
+  height: 2.5rem;
+
+  border: 1px solid ${({ theme }) => theme.colors.dark_green};
+  border-radius: 0.3rem;
+`;
+
+const InputTitle = styled.p`
+  display: flex;
+  justify-content: center;
+
+  align-items: center ${({ theme }) => theme.fonts.subtitle};
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  margin-top: 3rem;
+`;
+
+const Button = styled.button`
+  width: 30rem;
+  height: 3rem;
+
+  border-radius: 0.5rem;
+
+  ${({ theme }) => theme.fonts.subtitle};
+
+  &.signup {
+    background-color: ${({ theme }) => theme.colors.mid_green};
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;
