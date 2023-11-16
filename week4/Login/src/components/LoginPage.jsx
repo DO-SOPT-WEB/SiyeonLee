@@ -50,12 +50,7 @@ const LoginPage = () => {
         </IndivInputWrapper>
       </InputContainer>
       <ButtonContainer>
-        <Button
-          type="button"
-          onClick={() => {
-            handleLoginBtnClick();
-          }}
-        >
+        <Button type="button" onClick={handleLoginBtnClick}>
           Login
         </Button>
         <Button

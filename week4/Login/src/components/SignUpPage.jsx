@@ -1,13 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [confirmPw, setConfirmPw] = useState("");
   const [name, setName] = useState("");
+  const [isButtonAble, setIsButtonAble] = useState(false);
+
+  useEffect(() => {
+    const allowButtonClick = () => {
+      if (id && pw && confirmPw && name && pw === confirmPw) {
+        setIsButtonAble(true);
+      } else {
+        setIsButtonAble(false);
+      }
+    };
+
+    allowButtonClick();
+  }, [id, pw, confirmPw, name]);
 
   const handleSignUpBtnClick = async () => {
     try {
@@ -19,7 +33,6 @@ const SignUpPage = () => {
           password: pw,
         }
       );
-      console.log(response);
       response && navigate(`/login`);
     } catch (err) {
       alert("fill in the blanks plz");
@@ -59,7 +72,13 @@ const SignUpPage = () => {
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>CONFIRM P/W</InputTitle>
-          <Input placeholder="Confirm Password Here" />
+          <Input
+            placeholder="Confirm Password Here"
+            value={confirmPw}
+            onChange={(e) => {
+              setConfirmPw(e.target.value);
+            }}
+          />
         </IndivInputWrapper>
         <IndivInputWrapper>
           <InputTitle>USERNAME</InputTitle>
@@ -74,9 +93,8 @@ const SignUpPage = () => {
       </InputContainer>
       <Button
         type="button"
-        onClick={() => {
-          handleSignUpBtnClick();
-        }}
+        disabled={!isButtonAble}
+        onClick={handleSignUpBtnClick}
       >
         Sign Me Up!
       </Button>
@@ -160,6 +178,13 @@ const Button = styled.button`
   background-color: ${({ theme }) => theme.colors.mid_green};
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fonts.subtitle};
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.disabled_button};
+    color: ${({ theme }) => theme.colors.white};
+
+    cursor: not-allowed;
+  }
 
   &.check {
     width: 4rem;

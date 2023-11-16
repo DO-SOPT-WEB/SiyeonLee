@@ -7,7 +7,7 @@ const colors = {
   mid_green: "#4F6F52",
   dark_green: "#3A4D39",
   black: "#000000",
-  //   disabled_button: "#b1ad9a",
+  disabled_button: "#4f5351",
 };
 
 const fonts = {
