@@ -1,12 +1,24 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
+import { createPortal } from "react-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    let timer = setTimeout(() => {
+      setErrorMessage("");
+    }, 2000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [errorMessage]);
 
   const handleLoginBtnClick = async () => {
     try {
@@ -20,50 +32,57 @@ const LoginPage = () => {
 
       response && navigate(`/mypage/${response.data.id}`);
     } catch (err) {
-      console.log(err);
+      setErrorMessage(err.response.data.message);
     }
   };
 
   return (
-    <LoginPageContainer>
-      <Title>Login</Title>
-      <InputContainer>
-        <IndivInputWrapper>
-          <InputTitle>ID</InputTitle>
-          <Input
-            placeholder="Enter ID Here"
-            value={id}
-            onChange={(e) => {
-              setId(e.target.value);
+    <>
+      <LoginPageContainer>
+        <Title>Login</Title>
+        <InputContainer>
+          <IndivInputWrapper>
+            <InputTitle>ID</InputTitle>
+            <Input
+              placeholder="Enter ID Here"
+              value={id}
+              onChange={(e) => {
+                setId(e.target.value);
+              }}
+            />
+          </IndivInputWrapper>
+          <IndivInputWrapper>
+            <InputTitle>PASSWORD</InputTitle>
+            <Input
+              placeholder="Enter Password Here"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </IndivInputWrapper>
+        </InputContainer>
+        <ButtonContainer>
+          <Button type="button" onClick={handleLoginBtnClick}>
+            Login
+          </Button>
+          <Button
+            type="button"
+            onClick={() => {
+              navigate(`/signup`);
             }}
-          />
-        </IndivInputWrapper>
-        <IndivInputWrapper>
-          <InputTitle>PASSWORD</InputTitle>
-          <Input
-            placeholder="Enter Password Here"
-            value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-            }}
-          />
-        </IndivInputWrapper>
-      </InputContainer>
-      <ButtonContainer>
-        <Button type="button" onClick={handleLoginBtnClick}>
-          Login
-        </Button>
-        <Button
-          type="button"
-          onClick={() => {
-            navigate(`/signup`);
-          }}
-          className="signup"
-        >
-          Sign Up
-        </Button>
-      </ButtonContainer>
-    </LoginPageContainer>
+            className="signup"
+          >
+            Sign Up
+          </Button>
+        </ButtonContainer>
+      </LoginPageContainer>
+      {errorMessage &&
+        createPortal(
+          <Toast>{errorMessage}</Toast>,
+          document.getElementById("toast")
+        )}
+    </>
   );
 };
 
@@ -144,4 +163,24 @@ const Button = styled.button`
     background-color: ${({ theme }) => theme.colors.mid_green};
     color: ${({ theme }) => theme.colors.white};
   }
+`;
+
+const Toast = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 3rem;
+  width: 30rem;
+
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+
+  transform: translate(-50%, 0);
+
+  border-radius: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.black};
+  color: ${({ theme }) => theme.colors.white};
+  ${({ theme }) => theme.fonts.subtitle}
 `;
