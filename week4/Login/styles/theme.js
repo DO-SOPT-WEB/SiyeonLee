@@ -8,6 +8,7 @@ const colors = {
   dark_green: "#3A4D39",
   black: "#000000",
   disabled_button: "#4f5351",
+  check_disabled_button: "#ec4d4d",
 };
 
 const fonts = {

@@ -5,11 +5,14 @@ import axios from "axios";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
   const [confirmPw, setConfirmPw] = useState("");
   const [name, setName] = useState("");
+
   const [isButtonAble, setIsButtonAble] = useState(false);
+  const [isCheckBtnAble, setIsCheckBtnAble] = useState(false);
 
   useEffect(() => {
     const allowButtonClick = () => {
@@ -40,6 +43,22 @@ const SignUpPage = () => {
     }
   };
 
+  const checkIdAvailability = async () => {
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_BASE_URL}/api/v1/members/check?username=${id}`
+      );
+      console.log(response);
+      if (response.data.isExist === false) {
+        setIsCheckBtnAble(true);
+      } else {
+        setIsCheckBtnAble(false);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <SignUpPageContainer>
       <Title>Sign Up</Title>
@@ -55,7 +74,11 @@ const SignUpPage = () => {
                 setId(e.target.value);
               }}
             />
-            <Button className="check" type="button">
+            <Button
+              className={isCheckBtnAble ? "check" : "disabled"}
+              type="button"
+              onClick={checkIdAvailability}
+            >
               Check
             </Button>
           </IdInputWrapper>
@@ -179,18 +202,28 @@ const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fonts.subtitle};
 
-  &:disabled {
-    background-color: ${({ theme }) => theme.colors.disabled_button};
-    color: ${({ theme }) => theme.colors.white};
-
-    cursor: not-allowed;
-  }
-
   &.check {
     width: 4rem;
     height: 2.5rem;
     background-color: ${({ theme }) => theme.colors.mid_green};
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.small_button};
+  }
+  &.disabled {
+    /* background-color: #ec4d4d; */
+    width: 4rem;
+    height: 2.5rem;
+    background-color: ${({ theme }) => theme.colors.check_disabled_button};
+    color: ${({ theme }) => theme.colors.white};
+    ${({ theme }) => theme.fonts.small_button};
+
+    cursor: pointer;
+  }
+
+  &:disabled {
+    background-color: ${({ theme }) => theme.colors.disabled_button};
+    color: ${({ theme }) => theme.colors.white};
+
+    cursor: not-allowed;
   }
 `;
