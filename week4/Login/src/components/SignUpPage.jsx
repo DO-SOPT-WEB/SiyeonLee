@@ -12,7 +12,7 @@ const SignUpPage = () => {
   const [name, setName] = useState("");
 
   const [isButtonAble, setIsButtonAble] = useState(false);
-  const [isCheckBtnAble, setIsCheckBtnAble] = useState(false);
+  const [isCheckBtnAble, setIsCheckBtnAble] = useState();
 
   useEffect(() => {
     const allowButtonClick = () => {
@@ -48,7 +48,6 @@ const SignUpPage = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/api/v1/members/check?username=${id}`
       );
-      console.log(response);
       if (response.data.isExist === false) {
         setIsCheckBtnAble(true);
       } else {
@@ -57,6 +56,10 @@ const SignUpPage = () => {
     } catch (err) {
       console.log(err);
     }
+  };
+
+  const resetCheckBtn = () => {
+    setIsCheckBtnAble();
   };
 
   return (
@@ -72,10 +75,18 @@ const SignUpPage = () => {
               value={id}
               onChange={(e) => {
                 setId(e.target.value);
+                resetCheckBtn();
               }}
             />
             <Button
-              className={isCheckBtnAble ? "check" : "disabled"}
+              id="check_btn"
+              className={
+                isCheckBtnAble === true
+                  ? "able"
+                  : isCheckBtnAble === false
+                  ? "disable"
+                  : ""
+              }
               type="button"
               onClick={checkIdAvailability}
             >
@@ -202,22 +213,22 @@ const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fonts.subtitle};
 
-  &.check {
+  &#check_btn {
     width: 4rem;
     height: 2.5rem;
-    background-color: ${({ theme }) => theme.colors.mid_green};
-    color: ${({ theme }) => theme.colors.white};
-    ${({ theme }) => theme.fonts.small_button};
-  }
-  &.disabled {
-    /* background-color: #ec4d4d; */
-    width: 4rem;
-    height: 2.5rem;
-    background-color: ${({ theme }) => theme.colors.check_disabled_button};
+    background-color: ${({ theme }) => theme.colors.disabled_button};
     color: ${({ theme }) => theme.colors.white};
     ${({ theme }) => theme.fonts.small_button};
 
-    cursor: pointer;
+    &.able {
+      background-color: ${({ theme }) => theme.colors.mid_green};
+      color: ${({ theme }) => theme.colors.white};
+    }
+
+    &.disable {
+      background-color: ${({ theme }) => theme.colors.check_disabled_button};
+      color: ${({ theme }) => theme.colors.white};
+    }
   }
 
   &:disabled {
