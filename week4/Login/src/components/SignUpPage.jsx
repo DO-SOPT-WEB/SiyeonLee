@@ -16,7 +16,7 @@ const SignUpPage = () => {
 
   useEffect(() => {
     const allowButtonClick = () => {
-      if (id && pw && confirmPw && name && pw === confirmPw) {
+      if (id && pw && confirmPw && name && pw === confirmPw && isCheckBtnAble) {
         setIsButtonAble(true);
       } else {
         setIsButtonAble(false);
@@ -24,7 +24,7 @@ const SignUpPage = () => {
     };
 
     allowButtonClick();
-  }, [id, pw, confirmPw, name]);
+  }, [id, pw, confirmPw, name, isCheckBtnAble]);
 
   const handleSignUpBtnClick = async () => {
     try {
