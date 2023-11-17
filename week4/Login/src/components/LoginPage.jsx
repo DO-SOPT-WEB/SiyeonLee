@@ -36,6 +36,10 @@ const LoginPage = () => {
     }
   };
 
+  const handleEnterKeyDown = (e) => {
+    e.keyCode === 13 && handleLoginBtnClick();
+  };
+
   return (
     <>
       <LoginPageContainer>
@@ -59,6 +63,7 @@ const LoginPage = () => {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
+              onKeyDown={(e) => handleEnterKeyDown(e)}
             />
           </IndivInputWrapper>
         </InputContainer>
