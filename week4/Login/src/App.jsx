@@ -6,14 +6,12 @@ import styled from "styled-components";
 
 function App() {
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <GlobalStyles />
-        <MainContainer>
-          <Router />
-        </MainContainer>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <MainContainer>
+        <Router />
+      </MainContainer>
+    </ThemeProvider>
   );
 }
 

@@ -177,10 +177,29 @@ const Toast = styled.div`
   bottom: 20%;
   left: 50%;
 
-  transform: translate(-50%, 0);
-
   border-radius: 0.5rem;
+
   background-color: ${({ theme }) => theme.colors.black};
   color: ${({ theme }) => theme.colors.white};
   ${({ theme }) => theme.fonts.subtitle}
+
+  animation: 2s anim-lineUp ease-out infinite;
+
+  @keyframes anim-lineUp {
+    0% {
+      opacity: 0;
+      transform: translate(-50%, 80%);
+    }
+    20% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+    100% {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+  }
 `;
