@@ -145,7 +145,8 @@ const InputTitle = styled.p`
   display: flex;
   justify-content: center;
 
-  align-items: center ${({ theme }) => theme.fonts.subtitle};
+  align-items: center;
+  ${({ theme }) => theme.fonts.subtitle};
 `;
 
 const ButtonContainer = styled.div`

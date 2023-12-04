@@ -16,11 +16,9 @@ const SignUpPage = () => {
 
   useEffect(() => {
     const allowButtonClick = () => {
-      if (id && pw && confirmPw && name && pw === confirmPw && isCheckBtnAble) {
-        setIsButtonAble(true);
-      } else {
-        setIsButtonAble(false);
-      }
+      id && pw && confirmPw && name && pw === confirmPw && isCheckBtnAble
+        ? setIsButtonAble(true)
+        : setIsButtonAble(false);
     };
 
     allowButtonClick();
